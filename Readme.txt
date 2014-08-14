@@ -15,8 +15,11 @@ Let you change default "Wordpress <wordpress@yoursite.com>" e-mail address when 
 By default when you send any notification from your blog (including many of the Plugins as well) sender is "Wordpress" and the sender e-mail address is <wordpress@yourdomain.com>. I wanted to have personalized sender name and e-mail address that is why I created this Plugin. 
 
 This plugin will enable you to 
+
 * Replace default <wordpress@yourdomain.com> to any e-mail address
+
 * Replace default e-mail from "Wordpress"
+
 
 == Installation ==
 

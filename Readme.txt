@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JNF92
 Tags: admin, administration, email, newsletter, notification, simple, wordpress
 Requires at least: 3.9.2
 Tested up to: 3.9.2
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,7 @@ This plugin will enable you to
 
 * Replace default e-mail from "Wordpress"
 
+This plugin is compatible with Contact Form 7 (v3.9.1).
 
 == Installation ==
 
@@ -31,7 +32,7 @@ This plugin will enable you to
 
 = Where can I define new "Email From" name and from "Email Address"? =
 
-Go to Settings -> General -> "WP Custom Email Settings" section
+Go to Settings -> General -> "WP Custom Email Settings" section.
 
 
 == Screenshots ==
@@ -43,7 +44,13 @@ No screenshots yet.
 = 1.0 =
 * Initial release.
 
+= 1.1 =
+* Added Contact Form 7 compatibility
+
 == Upgrade Notice ==
 
 = 1.0 =
 * Initial release.
+
+= 1.1 =
+* Added Contact Form 7 compatibility

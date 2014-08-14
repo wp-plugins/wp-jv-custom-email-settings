@@ -3,7 +3,7 @@
  * Plugin Name: WP JV Custom Email Settings
  * Plugin URI: http://janosver.com/projects/wordpress/wp-jv-custom-email-settings
  * Description: By default all notification emails received from "Wordpress" wordpress@yourdomain.com. Once this plugin activated you can customize these (email from text and email address) at Settings -> General -> "WP JV Custom Email Settings" section
- * Version: 1.0
+ * Version: 1.1
  * Author: Janos Ver
  * License: GPLv2 or later
  */
@@ -56,7 +56,12 @@ function wp_jv_ces_admin_init() {
 
 //WP JV Custom Email Settings section intro text
 function wp_jv_ces_settings() {  
-	echo 'By default all notification emails received from "Wordpress" < wordpress@'. str_replace('https://www.','',str_replace('http://www.','',str_replace('https://','',str_replace('http://','',site_url())))). ' >. You can change these below.';
+	// Get the site domain and get rid of www. 
+    $sitename = strtolower( $_SERVER['SERVER_NAME'] ); 
+    if ( substr( $sitename, 0, 4 ) == 'www.' ) { 
+		$sitename = substr( $sitename, 4 ); 
+	} 
+	echo 'By default all notification emails received from "Wordpress" < wordpress@'. $sitename. ' >. You can change these below.';
 }
 
 //Settings field to set Email From text
@@ -68,21 +73,37 @@ function wp_jv_ces_set_email_from() {
 //Settings field to set Email from email Address
 function wp_jv_ces_set_email_from_address() {
 	settings_fields( 'wp_jv_ces_general_settings' ); 	
-	echo '<input class="regular-text ltr" type="email" id="wp_jv_ces_set_email_from_address" name="wp_jv_ces_set_email_from_address" placeholder="wordpress@'. str_replace('https://www.','',str_replace('http://www.','',str_replace('https://','',str_replace('http://','',site_url())))). '" value="'. get_option('wp_jv_ces_set_email_from_address'). '"></input>';
+	// Get the site domain and get rid of www. 
+    $sitename = strtolower( $_SERVER['SERVER_NAME'] ); 
+    if ( substr( $sitename, 0, 4 ) == 'www.' ) { 
+		$sitename = substr( $sitename, 4 ); 
+	} 	
+	echo '<input class="regular-text ltr" type="email" id="wp_jv_ces_set_email_from_address" name="wp_jv_ces_set_email_from_address" placeholder="wordpress@'. $sitename. '" value="'. get_option('wp_jv_ces_set_email_from_address'). '"></input>';
 }
 
 //Replace default <wordpress@yourdomain.com> e-mail address 
 function wp_jv_ces_wp_mail_from($email){
-	return get_option('wp_jv_ces_set_email_from_address');
+	// Get the site domain and get rid of www. 
+    $sitename = strtolower( $_SERVER['SERVER_NAME'] ); 
+    if ( substr( $sitename, 0, 4 ) == 'www.' ) { 
+		$sitename = substr( $sitename, 4 ); 
+	} 	
+	if ($email=="wordpress@". $sitename) { return get_option('wp_jv_ces_set_email_from_address');}
+	else {
+		return $email;
+	}
 }
 //Overwrite default e-mail address only if user set new value
-if (get_option('wp_jv_ces_set_email_from_address')) { add_filter('wp_mail_from', 'wp_jv_ces_wp_mail_from');}
+if (get_option('wp_jv_ces_set_email_from_address')) { add_filter('wp_mail_from', 'wp_jv_ces_wp_mail_from',1);}
 
 //Replace default e-mail from "Wordpress"
 function wp_jv_ces_wp_mail_from_name($from_name){
-	return get_option('wp_jv_ces_set_email_from');
+	if ($from_name=="WordPress") {return get_option('wp_jv_ces_set_email_from');}
+	else {
+		return $from_name;
+	}
 }
 //Overwrite default e-mail from text only if user set new value
-if (get_option('wp_jv_ces_set_email_from')) { add_filter('wp_mail_from_name', 'wp_jv_ces_wp_mail_from_name');}
+if (get_option('wp_jv_ces_set_email_from')) { add_filter('wp_mail_from_name', 'wp_jv_ces_wp_mail_from_name',1);}
 
 ?>

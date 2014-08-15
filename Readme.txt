@@ -37,7 +37,7 @@ Go to Settings -> General -> "WP Custom Email Settings" section.
 
 == Screenshots ==
 
-No screenshots yet.
+1. Settings -> General -> "WP Custom Email Settings"
 
 == Changelog ==
 

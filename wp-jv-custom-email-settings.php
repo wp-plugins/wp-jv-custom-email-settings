@@ -29,7 +29,7 @@ add_filter( 'plugin_row_meta', 'wp_jv_ces_settings_link' , 10, 2 );
 
 
 // Adds Donate link to Plugin page next under Plugin description 
-function wp_jv_prg_donate_link($links, $file) {
+function wp_jv_ces_donate_link($links, $file) {
 	if ( strpos( $file, 'wp-jv-custom-email-settings.php' ) !== false ) {
 	$new_links = array(
 						'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JNF92QJY4PGGA&lc=HU&item_name=WP%20JV%20Custom%20Email%20Settings%20%2d%20Plugin%20Donation&item_number=2&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" target="_blank">Donate</a>'
@@ -39,7 +39,7 @@ function wp_jv_prg_donate_link($links, $file) {
 	}
 return $links;
 }
-add_filter( 'plugin_row_meta', 'wp_jv_prg_donate_link' , 10, 2 );
+add_filter( 'plugin_row_meta', 'wp_jv_ces_donate_link' , 10, 2 );
 
 
 //Initialize settings

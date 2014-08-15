@@ -3,8 +3,9 @@
  * Plugin Name: WP JV Custom Email Settings
  * Plugin URI: http://janosver.com/projects/wordpress/wp-jv-custom-email-settings
  * Description: By default all notification emails received from "Wordpress" wordpress@yourdomain.com. Once this plugin activated you can customize these (email from text and email address) at Settings -> General -> "WP JV Custom Email Settings" section
- * Version: 1.1
+ * Version: 1.2
  * Author: Janos Ver
+ * Author URI: http://janosver.com
  * License: GPLv2 or later
  */
 
@@ -14,30 +15,15 @@ if(!defined('ABSPATH')) {
 	die('You are not allowed to call this page directly.');
 }
   
-// Adds Settings link to Plugin page next under Plugin description
-function wp_jv_ces_settings_link($links, $file) {
-	if ( strpos( $file, 'wp-jv-custom-email-settings.php' ) !== false ) {
-	$new_links = array(
-						'<a href="options-general.php#wp_jv_ces_set_email_from">Settings</a>'
-					  );
-	
-	$links = array_merge( $links, $new_links );
-	}
-return $links;
-}
-add_filter( 'plugin_row_meta', 'wp_jv_ces_settings_link' , 10, 2 );
-
-
 // Adds Donate link to Plugin page next under Plugin description 
 function wp_jv_ces_donate_link($links, $file) {
 	if ( strpos( $file, 'wp-jv-custom-email-settings.php' ) !== false ) {
 	$new_links = array(
 						'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JNF92QJY4PGGA&lc=HU&item_name=WP%20JV%20Custom%20Email%20Settings%20%2d%20Plugin%20Donation&item_number=2&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" target="_blank">Donate</a>'
-					  );
-	
+					  );	
 	$links = array_merge( $links, $new_links );
 	}
-return $links;
+	return $links;
 }
 add_filter( 'plugin_row_meta', 'wp_jv_ces_donate_link' , 10, 2 );
 
@@ -88,22 +74,24 @@ function wp_jv_ces_wp_mail_from($email){
     if ( substr( $sitename, 0, 4 ) == 'www.' ) { 
 		$sitename = substr( $sitename, 4 ); 
 	} 	
+	//Override only default email address - provides compatibility with other plugins
 	if ($email=="wordpress@". $sitename) { return get_option('wp_jv_ces_set_email_from_address');}
 	else {
 		return $email;
 	}
 }
 //Overwrite default e-mail address only if user set new value
-if (get_option('wp_jv_ces_set_email_from_address')) { add_filter('wp_mail_from', 'wp_jv_ces_wp_mail_from',1);}
+if (get_option('wp_jv_ces_set_email_from_address')) { add_filter('wp_mail_from', 'wp_jv_ces_wp_mail_from');}
 
-//Replace default e-mail from "Wordpress"
+//Replace default e-mail from "WordPress"
 function wp_jv_ces_wp_mail_from_name($from_name){
+	//Override only default email from - provides compatibility with other plugins
 	if ($from_name=="WordPress") {return get_option('wp_jv_ces_set_email_from');}
 	else {
 		return $from_name;
 	}
 }
 //Overwrite default e-mail from text only if user set new value
-if (get_option('wp_jv_ces_set_email_from')) { add_filter('wp_mail_from_name', 'wp_jv_ces_wp_mail_from_name',1);}
+if (get_option('wp_jv_ces_set_email_from')) {add_filter('wp_mail_from_name', 'wp_jv_ces_wp_mail_from_name');}
 
 ?>

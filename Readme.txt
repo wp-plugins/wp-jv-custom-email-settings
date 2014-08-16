@@ -1,5 +1,5 @@
 === WP JV Custom Email Settings ===
-Contributors: Janos Ver
+Contributors: janosver
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JNF92QJY4PGGA&lc=HU&item_name=WP%20JV%20Custom%20Email%20Settings%20%2d%20Plugin%20Donation&item_number=2&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: admin, administration, email, newsletter, notification, simple, wordpress
 Requires at least: 3.9.2

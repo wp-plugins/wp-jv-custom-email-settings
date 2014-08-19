@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JNF92
 Tags: admin, administration, email, newsletter, notification, simple, wordpress
 Requires at least: 3.9.2
 Tested up to: 3.9.2
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ This plugin will enable you to
 
 * Replace default <wordpress@yourdomain.com> to any e-mail address
 
-* Replace default e-mail from "WordPress" name to a custom name
+* Replace default e-mail from "WordPress" name to anything you want
 
 This plugin is compatible with Contact Form 7 (v3.9.1).
 
@@ -32,12 +32,12 @@ This plugin is compatible with Contact Form 7 (v3.9.1).
 
 = Where can I define new "Email From" name and from "Email Address"? =
 
-Go to Settings -> General -> "WP Custom Email Settings" section.
+Go to Settings -> General -> "WP JV Custom Email Settings" section.
 
 
 == Screenshots ==
 
-1. Settings -> General -> "WP Custom Email Settings"
+1. Settings -> General -> "WP JV Custom Email Settings"
 
 == Changelog ==
 
@@ -51,6 +51,9 @@ Go to Settings -> General -> "WP Custom Email Settings" section.
 * Code refactoring
 * Minor bugfixes
 
+= 1.3 =
+* Fixed issue with saving options
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -58,3 +61,9 @@ Go to Settings -> General -> "WP Custom Email Settings" section.
 
 = 1.1 =
 * Added Contact Form 7 compatibility
+
+= 1.2 =
+* Minor bugfixes
+
+= 1.3 =
+* Fixed issue with saving options

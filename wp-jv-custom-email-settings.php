@@ -2,8 +2,8 @@
 /**
  * Plugin Name: WP JV Custom Email Settings
  * Plugin URI: http://janosver.com/projects/wordpress/wp-jv-custom-email-settings
- * Description: By default all notification emails received from "Wordpress" wordpress@yourdomain.com. Once this plugin activated you can customize these (email from text and email address) at Settings -> General -> "WP JV Custom Email Settings" section
- * Version: 1.2
+ * Description: By default all notification emails received from "WordPress" wordpress@yourdomain.com. Once this plugin is activated you can change these to anything you want in Settings -> General -> "WP JV Custom Email Settings"
+ * Version: 1.3
  * Author: Janos Ver
  * Author URI: http://janosver.com
  * License: GPLv2 or later
@@ -52,13 +52,11 @@ function wp_jv_ces_settings() {
 
 //Settings field to set Email From text
 function wp_jv_ces_set_email_from() {
-	settings_fields( 'wp_jv_ces_general_settings' ); 	
 	echo '<input class="regular-text ltr" type="text" id="wp_jv_ces_set_email_from" name="wp_jv_ces_set_email_from" placeholder="Wordpress" value="'. get_option('wp_jv_ces_set_email_from'). '"></input>';
 } 
 
 //Settings field to set Email from email Address
 function wp_jv_ces_set_email_from_address() {
-	settings_fields( 'wp_jv_ces_general_settings' ); 	
 	// Get the site domain and get rid of www. 
     $sitename = strtolower( $_SERVER['SERVER_NAME'] ); 
     if ( substr( $sitename, 0, 4 ) == 'www.' ) { 

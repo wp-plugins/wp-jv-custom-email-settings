@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JNF92
 Tags: admin, administration, email, newsletter, notification, simple, wordpress
 Requires at least: 3.9.2
 Tested up to: 3.9.2
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,18 +41,21 @@ Go to Settings -> General -> "WP JV Custom Email Settings" section.
 
 == Changelog ==
 
-= 1.0 =
-* Initial release.
+= 1.4 =
+* Previous release caused another saving issue which is fixed now
 
-= 1.1 =
-* Added Contact Form 7 compatibility
+= 1.3 =
+* Fixed issue with saving options
 
 = 1.2 =
 * Code refactoring
 * Minor bugfixes
 
-= 1.3 =
-* Fixed issue with saving options
+= 1.1 =
+* Added Contact Form 7 compatibility
+
+= 1.0 =
+* Initial release.
 
 == Upgrade Notice ==
 
@@ -67,3 +70,6 @@ Go to Settings -> General -> "WP JV Custom Email Settings" section.
 
 = 1.3 =
 * Fixed issue with saving options
+
+= 1.4 =
+* Previous release caused another saving issue which is fixed now

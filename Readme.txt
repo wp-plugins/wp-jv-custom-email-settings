@@ -3,12 +3,12 @@ Contributors: janosver
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JNF92QJY4PGGA&lc=HU&item_name=WP%20JV%20Custom%20Email%20Settings%20%2d%20Plugin%20Donation&item_number=2&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: admin, administration, email, newsletter, notification, simple, wordpress
 Requires at least: 3.9.2
-Tested up to: 3.9.2
+Tested up to: 4.0
 Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Let you change default "WordPress <wordpress@yoursite.com>" e-mail address when sending out e-mails
+Let you change default "WordPress < wordpress@yoursite.com >" e-mail address when sending out e-mails
 
 == Description ==
 
@@ -20,7 +20,7 @@ This plugin will enable you to
 
 * Replace default e-mail from "WordPress" name to anything you want
 
-This plugin is compatible with Contact Form 7 (v3.9.1).
+This plugin is compatible with Contact Form 7 (up to v3.9.3).
 
 == Installation ==
 

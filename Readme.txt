@@ -20,7 +20,7 @@ This plugin will enable you to
 
 * Replace default e-mail from "WordPress" name to anything you want
 
-This plugin is compatible with Contact Form 7 (up to v3.9.3).
+This plugin is compatible with Contact Form 7 (up to v4.0).
 
 == Installation ==
 

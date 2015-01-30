@@ -80,12 +80,19 @@ Yes, it does, but in that case each site will have its own log in Posts -> JV CE
 
 = 2.0 =
 New features added:
+
 * Send e-mail notifications automatically/manually to all registered users about new public posts
+
 * Easily customize notification e-mail subject and content templates
+
 * Re-send e-mail notifications manually as well
+
 * Send notifications about password protected posts as well (password will NOT be included in notification e-mail)
+
 * If you have [WP JV Post Reading Groups plugin] (https://wordpress.org/plugins/wp-jv-post-reading-groups/) installed then entitled users can receive notifications about new private posts as well
+
 * Users can opt-out if they don't want to receive e-mails (they can choose to get all/nothing)
+
 * Maintain e-mail log about sent e-mail notifications
 
 = 1.4 =
@@ -124,9 +131,15 @@ New features added:
 = 2.0 =
 New features added:
 * Send e-mail notifications automatically/manually to all registered users about new public posts
+
 * Easily customize notification e-mail subject and content templates
+
 * Re-send e-mail notifications manually as well
+
 * Send notifications about password protected posts as well (password will NOT be included in notification e-mail)
+
 * If you have [WP JV Post Reading Groups plugin] (https://wordpress.org/plugins/wp-jv-post-reading-groups/) installed then entitled users can receive notifications about new private posts as well
+
 * Users can opt-out if they don't want to receive e-mails (they can choose to get all/nothing)
+
 * Maintain e-mail log about sent e-mail notifications

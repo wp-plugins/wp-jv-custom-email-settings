@@ -28,7 +28,7 @@ This plugin will enable you to
 
 * Send notifications about password protected posts as well (password will NOT be included in notification e-mail)
 
-* If you have [WP JV Post Reading Groups plugin]:(https://wordpress.org/plugins/wp-jv-post-reading-groups/) installed then entitled users can receive notifications about new private posts as well
+* If you have [WP JV Post Reading Groups plugin](https://wordpress.org/plugins/wp-jv-post-reading-groups/) installed then entitled users can receive notifications about new private posts as well
 
 * Users can opt-out if they don't want to receive e-mails (they can choose to get all/nothing)
 
@@ -51,7 +51,7 @@ Go to Settings -> General -> "WP JV Custom Email Settings" section.
 In Settings -> Writing -> "WP JV Custom Email Settings - Notifications" section you can select to send notifications automatically or manualy. If it is set to Auto whenever you publish a post notification e-mails will be sent out automatically for users with access to the post and opted to receive such notifications. In case of Manual you will be provided a "Send/Re-send notification email(s)" button to notify your readers. 
 
 = I'm not getting any notification e-mails, what is wrong? =
-In order to receive notification e-mails users have to go to their profile and check “Notify me by e-mail when a new post is published” checkbox in WP JV Custom Email Settings section (or an admin has to do it for them). Further more user has to have access to the post as well, but this applies to private posts only (see FAQ of [WP JV Post Reading Groups plugin] (https://wordpress.org/plugins/wp-jv-post-reading-groups/faq/) for more details). 
+In order to receive notification e-mails users have to go to their profile and check “Notify me by e-mail when a new post is published” checkbox in WP JV Custom Email Settings section (or an admin has to do it for them). Further more user has to have access to the post as well, but this applies to private posts only (see FAQ of [WP JV Post Reading Groups plugin](https://wordpress.org/plugins/wp-jv-post-reading-groups/faq/) for more details). 
 
 = What kind of tags I can use and for what? =
 You can customize notification e-mail template (both subject and content) In the content you can use any standard html tags as well on top of the following ones:
@@ -89,7 +89,7 @@ New features added:
 
 * Send notifications about password protected posts as well (password will NOT be included in notification e-mail)
 
-* If you have [WP JV Post Reading Groups plugin] (https://wordpress.org/plugins/wp-jv-post-reading-groups/) installed then entitled users can receive notifications about new private posts as well
+* If you have [WP JV Post Reading Groups plugin](https://wordpress.org/plugins/wp-jv-post-reading-groups/) installed then entitled users can receive notifications about new private posts as well
 
 * Users can opt-out if they don't want to receive e-mails (they can choose to get all/nothing)
 
@@ -139,7 +139,7 @@ New features added:
 
 * Send notifications about password protected posts as well (password will NOT be included in notification e-mail)
 
-* If you have [WP JV Post Reading Groups plugin] (https://wordpress.org/plugins/wp-jv-post-reading-groups/) installed then entitled users can receive notifications about new private posts as well
+* If you have [WP JV Post Reading Groups plugin](https://wordpress.org/plugins/wp-jv-post-reading-groups/) installed then entitled users can receive notifications about new private posts as well
 
 * Users can opt-out if they don't want to receive e-mails (they can choose to get all/nothing)
 

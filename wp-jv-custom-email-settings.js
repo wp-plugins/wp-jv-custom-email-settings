@@ -1,6 +1,6 @@
 /*
 // Scripts for WP JV Custom Email Settings
-// @version: 2.0
+// @version: 2.1
 */
 jQuery(document).ready(function($){
 	/************************************************************************************************************/
@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
 		//Display loading icon while it is sending out emails
 		document.getElementById('dProgress').style.display = 'inline-block';		
 		document.getElementById('jv-ces-message').style.display = 'inline-block';	
-		document.getElementById('jv-ces-message').innerHTML='Sending email notifications...';		
+		document.getElementById('jv-ces-message').innerHTML=wp_jv_ces_obj.sending_mails;		
 				
 		$('#dProgress')
 			.ajaxStart(function() {								
@@ -50,17 +50,17 @@ jQuery(document).ready(function($){
 			*/
 			if (response.error) {
 				if (response.logged_count==0 || response.sent_count==0) {
-					document.getElementById('jv-ces-message').innerHTML='Error sending emails.';
+					document.getElementById('jv-ces-message').innerHTML=wp_jv_ces_obj.error_sending;
 					alert (response.error_msg + '\n\n[Error: '+ response.error_code + ']');
 				}
 				else {
-					document.getElementById('jv-ces-message').innerHTML=response.sent_count +' email(s) out of ' + (response.sent_count+response.sending_error_count) + ' sent with ' + (response.sent_count+response.sending_error_count-response.logged_count) + ' log issues. Check <a href="' + response.log_page_url + '">log</a> for details.';					
-					$('#btnSendNotification').attr('value', 'Re-send notification email(s)');
+					document.getElementById('jv-ces-message').innerHTML=response.sent_count + ' ' + wp_jv_ces_obj.emails_out_of + ' ' + (response.sent_count+response.sending_error_count) + ' '+wp_jv_ces_obj.sent_with+' ' + (response.sent_count+response.sending_error_count-response.logged_count) + ' '+wp_jv_ces_obj.log_issues+' <a href="' + response.log_page_url + '">' + wp_jv_ces_obj.log + '</a> '+wp_jv_ces_obj.for_details;					
+					$('#btnSendNotification').attr('value', wp_jv_ces_obj.resend);
 				}
 			} else {					
 					//Emails sent successfully					
-					document.getElementById('jv-ces-message').innerHTML='<br>' + response.sent_count + ' notification(s) sent. Check <a href="' + response.log_page_url + '">log</a> for details.';
-					$('#btnSendNotification').attr('value', 'Re-send notification email(s)');
+					document.getElementById('jv-ces-message').innerHTML='<br>' + response.sent_count + ' ' + wp_jv_ces_obj.notif_sent_check + ' <a href="' + response.log_page_url + '">'+ wp_jv_ces_obj.log + '</a> ' +wp_jv_ces_obj.for_details;
+					$('#btnSendNotification').attr('value', wp_jv_ces_obj.resend);
 					}
 			//Re-enable button
 			$('#btnSendNotification').attr('disabled', false);		

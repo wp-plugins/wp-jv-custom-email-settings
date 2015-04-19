@@ -3,7 +3,7 @@
  * Plugin Name: WP JV Custom Email Settings
  * Plugin URI: http://janosver.com/projects/wordpress/wp-jv-custom-email-settings
  * Description: Notify users about new posts published and customize your e-mail notification settings
- * Version: 2.0
+ * Version: 2.1
  * Author: Janos Ver
  * Author URI: http://janosver.com
  * License: GPLv2 or later
@@ -69,16 +69,16 @@ add_action( 'plugins_loaded', 'wp_jv_ces_db_version_check' );
 function wp_jv_ces_admin_init() {	
 	//Adding settings to Settings->General
 	add_settings_section('wp_jv_ces_general_settings','WP JV Custom Email Settings','wp_jv_ces_general_settings','general');
-	add_settings_field('wp_jv_ces_set_email_from', 'Email From', 'wp_jv_ces_set_email_from', 'general', 'wp_jv_ces_general_settings');
-	add_settings_field('wp_jv_ces_set_email_from_address', 'Email Address', 'wp_jv_ces_set_email_from_address', 'general', 'wp_jv_ces_general_settings');
+	add_settings_field('wp_jv_ces_set_email_from', __('Email From','wp-jv-custom-email-settings'), 'wp_jv_ces_set_email_from', 'general', 'wp_jv_ces_general_settings');
+	add_settings_field('wp_jv_ces_set_email_from_address', __('Email Address','wp-jv-custom-email-settings'), 'wp_jv_ces_set_email_from_address', 'general', 'wp_jv_ces_general_settings');
 	register_setting( 'general', 'wp_jv_ces_set_email_from' );
 	register_setting( 'general', 'wp_jv_ces_set_email_from_address' );
 	//Adding settings to Settings->Writing
-	add_settings_section('wp_jv_ces_writing_settings','WP JV Custom Email Settings - Notifications','wp_jv_ces_writing_settings','writing');
-	add_settings_field('wp_jv_ces_set_notification_mode', 'Notification mode', 'wp_jv_ces_set_notification_mode', 'writing', 'wp_jv_ces_writing_settings');
-	add_settings_field('wp_jv_ces_set_notification_about', 'Notify users about', 'wp_jv_ces_set_notification_about', 'writing', 'wp_jv_ces_writing_settings');
-	add_settings_field('wp_jv_ces_set_subject', 'Notification e-mail subject', 'wp_jv_ces_set_subject', 'writing', 'wp_jv_ces_writing_settings');
-	add_settings_field('wp_jv_ces_set_content', 'Notification e-mail content', 'wp_jv_ces_set_content', 'writing', 'wp_jv_ces_writing_settings');	
+	add_settings_section('wp_jv_ces_writing_settings','WP JV Custom Email Settings - '.__('Notifications','wp-jv-custom-email-settings'),'wp_jv_ces_writing_settings','writing');
+	add_settings_field('wp_jv_ces_set_notification_mode', __('Notification mode','wp-jv-custom-email-settings'), 'wp_jv_ces_set_notification_mode', 'writing', 'wp_jv_ces_writing_settings');
+	add_settings_field('wp_jv_ces_set_notification_about', __('Notify users about','wp-jv-custom-email-settings'), 'wp_jv_ces_set_notification_about', 'writing', 'wp_jv_ces_writing_settings');
+	add_settings_field('wp_jv_ces_set_subject', __('Notification e-mail subject','wp-jv-custom-email-settings'), 'wp_jv_ces_set_subject', 'writing', 'wp_jv_ces_writing_settings');
+	add_settings_field('wp_jv_ces_set_content', __('Notification e-mail content','wp-jv-custom-email-settings'), 'wp_jv_ces_set_content', 'writing', 'wp_jv_ces_writing_settings');	
 	//#TODO: purge
 	//add_settings_field('wp_jv_ces_set_notification_log', 'Logging', 'wp_jv_ces_set_notification_log', 'writing', 'wp_jv_ces_writing_settings');	
 	register_setting( 'writing', 'wp_jv_ces_set_notification_mode' );
@@ -95,12 +95,25 @@ add_action( 'admin_init', 'wp_jv_ces_admin_init' );
 //Initialize js methods
 function wp_jv_ces_load_js_methods() {   
    wp_register_script( 'wp_jv_ces_script', plugin_dir_url(__FILE__).'wp-jv-custom-email-settings.js', array('jquery') );      
+   //support languages
+   load_plugin_textdomain('wp-jv-custom-email-settings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+   //Improve security   
+   $nonce_array = array( 
+	'wp_jv_ces_nonce' =>  wp_create_nonce ('wp_jv_ces_nonce'),
+	'sending_mails' => __('Sending email notifications...','wp-jv-custom-email-settings'),
+	'error_sending'=>__('Error sending emails.','wp-jv-custom-email-settings'),
+	'resend'=>__('Re-send notification email(s)','wp-jv-custom-email-settings'),
+	'email_out_of' => __('email(s) out of','wp-jv-custom-email-settings'),
+	'notif_sent_check' => __('notification(s) sent. Check','wp-jv-custom-email-settings'),
+	'sent_with' => __('sent with','wp-jv-custom-email-settings'),
+	'log_issues'=>__('log issues. Check','wp-jv-custom-email-settings'),
+	'log' =>__('log','wp-jv-custom-email-settings'),
+	'for_details'=>__('for details.','wp-jv-custom-email-settings')
+   );   
+   wp_localize_script( 'wp_jv_ces_script', 'wp_jv_ces_obj', $nonce_array );
+   wp_enqueue_script( 'wp_jv_ces_script' );
    //Make sure we can use jQuery
    wp_enqueue_script( 'jquery' );   
-   wp_enqueue_script( 'wp_jv_ces_script' );
-   //Improve security
-   $nonce_array = array( 'wp_jv_ces_nonce' =>  wp_create_nonce ('wp_jv_ces_nonce') );
-   wp_localize_script( 'wp_jv_ces_script', 'wp_jv_ces_obj', $nonce_array );
 }
 add_action( 'init', 'wp_jv_ces_load_js_methods' );
 
@@ -115,7 +128,7 @@ function wp_jv_ces_general_settings() {
     if ( substr( $sitename, 0, 4 ) == 'www.' ) { 
 		$sitename = substr( $sitename, 4 ); 
 	} 
-	echo 'By default all notification e-mails received from "Wordpress" < wordpress@'. $sitename. ' >. You can change these below.';
+	echo __('By default all notification e-mails received from "Wordpress" < wordpress@','wp-jv-custom-email-settings'). $sitename. ' >. '.__('You can change these below.','wp-jv-custom-email-settings');
 }
 
 //Settings field to set Email From text
@@ -139,22 +152,22 @@ function wp_jv_ces_set_email_from_address() {
 
 //Notifications section intro text
 function wp_jv_ces_writing_settings() {  	
-	echo 'Tags available to make e-mail subject and/or content dynamic:';
+	echo __('Tags available to make e-mail subject and/or content dynamic:','wp-jv-custom-email-settings');
 	echo '<br>';
-	echo '<strong>%title%</strong> means title of the post<br>';	
-	echo '<strong>%permalink%</strong> means URL of the post<br>';
-	echo '<strong>%title_with_permalink%</strong> means URL with title of the post<br>';	
-	echo '<strong>%author_name%</strong> means the name of the post author<br>';
-	echo '<strong>%excerpt%</strong> means excerpt of the post<br>';
-	echo '<strong>%words_n%</strong> means the first n (must be an integer number) number of word(s) extracted from the post<br>';
-	echo '<strong>%recipient_name%</strong> means display name of the user who receives the e-mail<br>';
+	echo '<strong>%title%</strong> '. __('means title of the post','wp-jv-custom-email-settings') .'<br>';	
+	echo '<strong>%permalink%</strong> '. __('means URL of the post','wp-jv-custom-email-settings') .'<br>';
+	echo '<strong>%title_with_permalink%</strong> '. __('means URL with title of the post','wp-jv-custom-email-settings') .'<br>';	
+	echo '<strong>%author_name%</strong> '. __('means the name of the post author','wp-jv-custom-email-settings') .'<br>';
+	echo '<strong>%excerpt%</strong> '. __('means excerpt of the post','wp-jv-custom-email-settings') .'<br>';
+	echo '<strong>%words_n%</strong> '. __('means the first n (must be an integer number) number of word(s) extracted from the post','wp-jv-custom-email-settings') .'<br>';
+	echo '<strong>%recipient_name%</strong> '. __('means display name of the user who receives the e-mail','wp-jv-custom-email-settings') .'<br>';
 	echo '<br><br>';
 }
 
 //Settings field to set Notification mode: Auto/Manual
 function wp_jv_ces_set_notification_mode() {	
-	echo '<input type="radio" name="wp_jv_ces_set_notification_mode" value="Auto" '. checked('Auto', get_option('wp_jv_ces_set_notification_mode'), false). '>Auto</input> (send e-mails automatically when you publish a post)<br>';
-	echo '<input type="radio" name="wp_jv_ces_set_notification_mode" value="Manual" '. checked('Manual', get_option('wp_jv_ces_set_notification_mode'), false). '>Manual</input> (you need to press a button to send notification)';
+	echo '<input type="radio" name="wp_jv_ces_set_notification_mode" value="Auto" '. checked('Auto', get_option('wp_jv_ces_set_notification_mode'), false). '>'. __('Auto','wp-jv-custom-email-settings').'</input> '.__('(send e-mails automatically when you publish a post)','wp-jv-custom-email-settings').'<br>';
+	echo '<input type="radio" name="wp_jv_ces_set_notification_mode" value="Manual" '. checked('Manual', get_option('wp_jv_ces_set_notification_mode'), false). '>'. __('Manual','wp-jv-custom-email-settings').'</input> '.__('(you need to press a button to send notification)','wp-jv-custom-email-settings');
 } 
 
 //Settings field to set Notify users about public/private/password protected posts
@@ -169,32 +182,32 @@ function wp_jv_ces_set_notification_about() {
 	if (array_key_exists('Chkbx_Password',$options)) { $password_checked = ' checked="checked" '; } 
 	if (array_key_exists('Chkbx_Private',$options)) { $private_checked = ' checked="checked" '; } 
 	}	
-	echo '<input type="checkbox" id="Chkbx_Public" name="wp_jv_ces_set_notification_about[Chkbx_Public]" value="Public" '. $public_checked.'>Public posts</input><br>';
+	echo '<input type="checkbox" id="Chkbx_Public" name="wp_jv_ces_set_notification_about[Chkbx_Public]" value="Public" '. $public_checked.'>'. __('Public posts','wp-jv-custom-email-settings') .'</input><br>';
 	
-	echo '<input type="checkbox" id="Chkbx_Password" name="wp_jv_ces_set_notification_about[Chkbx_Password]" value="Password"'.  $password_checked.'>Password</input> protected posts (password will <strong>NOT</strong> be included in notification e-mail)<br>';
+	echo '<input type="checkbox" id="Chkbx_Password" name="wp_jv_ces_set_notification_about[Chkbx_Password]" value="Password"'.  $password_checked.'>'.__('Password','wp-jv-custom-email-settings'). '</input> '. __('protected posts (password will','wp-jv-custom-email-settings').' <strong>'.__('NOT','wp-jv-custom-email-settings'). '</strong> '. __('be included in notification e-mail)','wp-jv-custom-email-settings'). '<br>';
 	
 	//Check if WP JV Post Reading Groups is active or not
 	$private_message='';
 	if (is_plugin_active('wp-jv-post-reading-groups/wp-jv-post-reading-groups.php')) { $private_possible='';}
 	else {
 		$private_possible='disabled';
-		$private_message='This feature requires <a href="https://wordpress.org/plugins/wp-jv-post-reading-groups/" target="_blank">WP JV Post Reading Groups plugin</a> to be installed and activated. ';
+		$private_message=__('This feature requires','wp-jv-custom-email-settings').' <a href="https://wordpress.org/plugins/wp-jv-post-reading-groups/" target="_blank">WP JV Post Reading Groups plugin</a> '.__('to be installed and activated.','wp-jv-custom-email-settings');
 	}
 	
-	echo '<input type="checkbox" id="Chkbx_Private" name="wp_jv_ces_set_notification_about[Chkbx_Private]" value="Private"'.  $private_checked. $private_possible. '>Private posts</input> - '. $private_message. 'Notifications are based on <a href="https://wordpress.org/plugins/wp-jv-post-reading-groups/" target="_blank">WP JV Post Reading Groups plugin</a> settings.';	
+	echo '<input type="checkbox" id="Chkbx_Private" name="wp_jv_ces_set_notification_about[Chkbx_Private]" value="Private"'.  $private_checked. $private_possible. '>'. __('Private posts','wp-jv-custom-email-settings'). '</input> - '. $private_message.' '. __('Notifications are based on','wp-jv-custom-email-settings').' <a href="https://wordpress.org/plugins/wp-jv-post-reading-groups/" target="_blank">WP JV Post Reading Groups plugin</a> '.__('settings.','wp-jv-custom-email-settings');	
 } 
 
 //Settings field to set notification email subject
 function wp_jv_ces_set_subject(){	
 	echo '<input class="regular-text ltr" type="text" id="wp_jv_ces_set_subject" name="wp_jv_ces_set_subject" placeholder="New post: %title%" value="'. get_option('wp_jv_ces_set_subject'). '"></input>';
-	echo '<br><br>Hint: HTML tags are not allowed here. E.g.: %title_with_permalink% will revert to %title%.';
+	echo '<br><br>'.__('Hint: HTML tags are not allowed here, e.g.: %title_with_permalink% will revert to %title%.','wp-jv-custom-email-settings');
 }
 
 //Settings field to set notification email content
 function wp_jv_ces_set_content(){
 	echo '<textarea id="wp_jv_ces_set_content" name="wp_jv_ces_set_content" cols="80" rows="10" 
 	placeholder="Dear %recipient_name%, A new post is published. Check it out! %title_with_permalink% %words_50% In case you do not want to receive this kind of notification you can turn it off in your profile.">'. get_option('wp_jv_ces_set_content'). '</textarea>';
-	echo '<br><br>Hint: HTML tags are welcome here to make your notification e-mails more personalized.';
+	echo '<br><br>'.__('Hint: HTML tags are welcome here to make your notification e-mails more personalized.','wp-jv-custom-email-settings');
 }
 
 //#TODO: purge
@@ -226,7 +239,7 @@ function wp_jv_ces_user_profile($user) {
 		$wp_jv_ces_user_notification=checked(1,get_user_meta($user->ID, 'wp_jv_ces_user_notification',true),false);
 	}
 	
-	echo '<input type="checkbox" name="wp_jv_ces_user_notification" value="1" '. $wp_jv_ces_user_notification. '>Notify me by e-mail when a new post is published</input><br>';
+	echo '<input type="checkbox" name="wp_jv_ces_user_notification" value="1" '. $wp_jv_ces_user_notification. '>'.__('Notify me by e-mail when a new post is published','wp-jv-custom-email-settings'). '</input><br>';
 
 	echo '</div>'; //jv-content end
 	
@@ -284,7 +297,7 @@ add_filter( 'manage_users_custom_column', 'wp_jv_ces_all_users_column_rows', 10,
 /************************************************************************************************************/
 
 function wp_jv_ces_add_metabox_head() {
-	add_meta_box('wp_jv_ces_sectionid',__( 'WP JV Custom Email Settings', 'wp_jv_ces_textdomain' ),'wp_jv_ces_add_metabox',	'post','side','high');	
+	add_meta_box('wp_jv_ces_sectionid', 'WP JV Custom Email Settings','wp_jv_ces_add_metabox',	'post','side','high');	
 }
 add_action( 'add_meta_boxes', 'wp_jv_ces_add_metabox_head' );
 
@@ -297,17 +310,17 @@ function wp_jv_ces_add_metabox(){
 	$recipients=wp_jv_ces_prepare_mail_recipients($post_id);
 	$hasrecipient=!empty($recipients);
 	if ((!empty($notification_sent) || $notification_sent=='1') && in_array($pstatus, array('Public','Password protected','Private')) && $hasrecipient) {	  		
-		echo '<input type="button" id="btnSendNotification" class="button-secondary" value="Re-send notification email(s)" />';
+		echo '<input type="button" id="btnSendNotification" class="button-secondary" value="'.__('Re-send notification email(s)','wp-jv-custom-email-settings').'" />';
 	} 
 	else {
 		if (in_array($pstatus, array('Public','Password protected','Private')) && (empty($notification_sent) || $notification_sent=='0') && $hasrecipient) {		
-			echo '<input type="button" id="btnSendNotification" class="button-secondary" value="Send notification email(s)"/>';
+			echo '<input type="button" id="btnSendNotification" class="button-secondary" value="'.__('Send notification email(s)','wp-jv-custom-email-settings').'"/>';
 			} 
 			else if (empty($notification_sent) || $notification_sent=='0') {
-					echo '<input type="button" id="btnSendNotification" class="button-secondary" value="Send notification email(s)" disabled/>';
+					echo '<input type="button" id="btnSendNotification" class="button-secondary" value="'.__('Send notification email(s)','wp-jv-custom-email-settings').'" disabled/>';
 				}
 				else if (!empty($notification_sent) || $notification_sent=='1') {
-						echo '<input type="button" id="btnSendNotification" class="button-secondary" value="Re-send notification email(s)" disabled/>';
+						echo '<input type="button" id="btnSendNotification" class="button-secondary" value="'.__('Re-send notification email(s)','wp-jv-custom-email-settings').'" disabled/>';
 				}
 		}	
 	//Pass post id to jQuery
@@ -316,7 +329,7 @@ function wp_jv_ces_add_metabox(){
 	echo '<span id="dProgress" style="display:none; margin-top: 5px;" >';
 	echo '<img id="spnSendNotifications" src="'. admin_url() . '/images/wpspin_light.gif">';		
 	echo '</span>';		
-	echo '<span id="jv-ces-message" style="display: none; margin-left: 5px;">Sending email notifications...</span>';
+	echo '<span id="jv-ces-message" style="display: none; margin-left: 5px;">'.__('Sending email notifications...','wp-jv-custom-email-settings').'</span>';
 	echo '</div>';	
 
 	//to debug uncomment the following 
@@ -335,7 +348,7 @@ function wp_jv_ces_add_metabox(){
 /************************************************************************************************************/
 
 function wp_jv_ces_notification_log_menu() {
-	$plugin_page=add_submenu_page( 'edit.php', 'JV CES Notification Email Log', 'JV CES Email Log', 'edit_posts', 'wp_jv_ces_notification_log_menu_page','wp_jv_ces_notification_log_menu_page' );
+	$plugin_page=add_submenu_page( 'edit.php', 'JV CES Notification Email '.__('Log','wp-jv-custom-email-settings'), 'JV CES Email '. __('Log','wp-jv-custom-email-settings'), 'edit_posts', 'wp_jv_ces_notification_log_menu_page','wp_jv_ces_notification_log_menu_page' );
 	add_action( 'admin_head-'.$plugin_page, 'wp_jv_ces_admin_head' );	
 }
 add_action( 'admin_menu', 'wp_jv_ces_notification_log_menu' );
@@ -369,23 +382,22 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 /*Start class WP_JV_CES_List_Table*/
 class WP_JV_CES_List_Table extends WP_List_Table {
 
-	function __construct(){		
-		global $status, $page;		
-		parent::__construct( array(
+	function __construct( $args = array()){		
+		$args = wp_parse_args($args,  array(
 			'singular'  => __( 'Notification email sent' ),     //singular name of the listed records
 			'plural'    => __( 'Notification emails sent' ),   //plural name of the listed records
-			'ajax'      => false        				
-			));			
+			'ajax'      => false
+			));		
 	}
 	
 	function get_columns(){
 		$columns = array(					
 						'id'				=> '#',
-						'post_title' 		=> 'Post Title',
-						'time_mail_sent'	=> 'E-mail sent',
-						'user_display_name' => 'User Name',
-						'user_email' 		=> 'User E-mail',
-						'status' 			=> 'Status'
+						'post_title' 		=> __('Post Title','wp-jv-custom-email-settings'),
+						'time_mail_sent'	=> __('E-mail sent','wp-jv-custom-email-settings'),
+						'user_display_name' => __('User Name','wp-jv-custom-email-settings'),
+						'user_email' 		=> __('User E-mail','wp-jv-custom-email-settings'),
+						'status' 			=> __('Status','wp-jv-custom-email-settings')
 						);
 		return $columns;
 	}
@@ -494,9 +506,12 @@ class WP_JV_CES_List_Table extends WP_List_Table {
 	}
 
 	function no_items() {
-	  _e( 'No e-mails sent out, yet.' );
+	  echo __( 'No e-mails sent out, yet.','wp-jv-custom-email-settings' );
 	}	
 	
+	function bulk_actions($which = ''){		
+		//
+	}
 		
 } 
 /*End class WP_JV_CES_List_Table*/
@@ -866,18 +881,18 @@ function wp_jv_ces_send_notification_auto($post_id ) {
 			if ($result['error']) {
 				//Error
 				if ($result['logged_count']==0 || $result['sent_count']==0) {
-					$message = __('<br>Error sending notifications. <a href="'. $result['log_page_url']. '">Check log</a> for details.', 'wp_jv_ces_textdomain' );
+					$message = '<br>'.__('Error sending notifications.','wp-jv-custom-email-settings').'<a href="'. $result['log_page_url']. '">'.__('Check log','wp-jv-custom-email-settings').'</a> '.__('for details.', 'wp-jv-custom-email-settings' );
 				}
 				else {
 					//Warning
 					set_transient('auto_notification_result', 'update-nag');						
-					$message = __('<br>'.$result['sent_count']. ' email(s) out of '. ($result['sent_count']+$result['sending_error_count']). ' sent with '. ($result['sent_count']+$result['sending_error_count']-$result['logged_count']) .' log issues. Check <a href="'. $result['log_page_url']. '">Check log</a> for details.','wp_jv_ces_textdomain');
+					$message = '<br>'.$result['sent_count'].' '. __('email(s) out of','wp-jv-custom-email-settings').' '. ($result['sent_count']+$result['sending_error_count']).' '. __('sent with','wp-jv-custom-email-settings').' '. ($result['sent_count']+$result['sending_error_count']-$result['logged_count']).' ' .__('log issues.','wp-jv-custom-email-settings') .'<a href="'. $result['log_page_url']. '">'.__('Check log','wp-jv-custom-email-settings').'</a> '. __('for details.','wp-jv-custom-email-settings');
 				}
 			} 
 			else {			
 				//Emails sent successfully	
 				set_transient('auto_notification_result', 'updated');
-				$message = __('<br>'.$result['sent_count']. ' notification(s) sent. <a href="'. $result['log_page_url']. '">Check log</a> for details.','wp_jv_ces_textdomain');							
+				$message = '<br>'.$result['sent_count'].' '. __('notification(s) sent.','wp-jv-custom-email-settings').' <a href="'. $result['log_page_url']. '">'.__('Check log','wp-jv-custom-email-settings').'</a> '.__('for details.','wp-jv-custom-email-settings');
 			}				
 			set_transient('auto_notification_message',$message );
 			remove_action('transition_post_status', 'wp_jv_ces_send_notification_auto');

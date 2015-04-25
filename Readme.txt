@@ -35,7 +35,9 @@ This plugin will enable you to
 * Maintain e-mail log about sent e-mail notifications
 
 Translations
+
 * Hungarian - Janos Ver
+
 * Serbian - Andrijana Nikolic
 
 == Installation ==

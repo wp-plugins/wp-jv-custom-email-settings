@@ -1,6 +1,6 @@
 /*
 // Scripts for WP JV Custom Email Settings
-// @version: 2.1
+// @version: 2.2
 */
 jQuery(document).ready(function($){
 	/************************************************************************************************************/

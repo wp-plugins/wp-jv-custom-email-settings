@@ -3,7 +3,7 @@
  * Remove settings on plugin delete.
  *
  * WP JV Custom Email Settings Uninstaller
- * @version 2.0
+ * @version 2.2
  */
 
 if(!defined('WP_UNINSTALL_PLUGIN')) {

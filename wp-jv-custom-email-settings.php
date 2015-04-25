@@ -3,7 +3,7 @@
  * Plugin Name: WP JV Custom Email Settings
  * Plugin URI: http://janosver.com/projects/wordpress/wp-jv-custom-email-settings
  * Description: Notify users about new posts published and customize your e-mail notification settings
- * Version: 2.1
+ * Version: 2.2
  * Author: Janos Ver
  * Author URI: http://janosver.com
  * License: GPLv2 or later

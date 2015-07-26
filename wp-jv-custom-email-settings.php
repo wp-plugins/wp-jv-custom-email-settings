@@ -3,7 +3,7 @@
  * Plugin Name: WP JV Custom Email Settings
  * Plugin URI: http://janosver.com/projects/wordpress/wp-jv-custom-email-settings
  * Description: Notify users about new posts published and customize your e-mail notification settings
- * Version: 2.2
+ * Version: 2.3
  * Author: Janos Ver
  * Author URI: http://janosver.com
  * License: GPLv2 or later
@@ -94,7 +94,7 @@ add_action( 'admin_init', 'wp_jv_ces_admin_init' );
 
 //Initialize js methods
 function wp_jv_ces_load_js_methods() {   
-   wp_register_script( 'wp_jv_ces_script', plugin_dir_url(__FILE__).'wp-jv-custom-email-settings.js', array('jquery') );      
+   wp_register_script( 'wp_jv_ces_script', plugin_dir_url(__FILE__).'wp-jv-custom-email-settings.min.js', array('jquery') );      
    //support languages
    load_plugin_textdomain('wp-jv-custom-email-settings', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
    //Improve security   
@@ -271,9 +271,10 @@ add_action('user_new_form','wp_jv_ces_user_profile');
 add_action('user_register','wp_jv_ces_save_user_profile');
 
 /************************************************************************************************************/
-/* Add subscription to notifications to All Users screen */
+/* Users -> All Users*/
 /************************************************************************************************************/
 
+/* Add subscription to notifications */
 //Add column
 function wp_jv_ces_all_users_column_register( $columns ) {
     $columns['wp_jv_ces_notification'] = 'WP JV Email notifications';
@@ -291,6 +292,91 @@ function wp_jv_ces_all_users_column_rows( $empty, $column_name, $user_id ) {
 }
 add_filter( 'manage_users_columns', 'wp_jv_ces_all_users_column_register' );
 add_filter( 'manage_users_custom_column', 'wp_jv_ces_all_users_column_rows', 10, 3 );
+
+// Bulk subscribe/unsubscribe users
+if (!class_exists('wp_jv_ces_all_users_bulk_action')) {
+ 
+	class wp_jv_ces_all_users_bulk_action {
+		
+		public function __construct() {
+			if(is_admin()) {
+				// admin actions
+				add_action('admin_footer-users.php', array(&$this, 'custom_bulk_admin_footer'));
+				add_action('load-users.php',         array(&$this, 'custom_bulk_action'));
+			}
+		}
+				
+		// Step 1: add subscribe/unsubscribe actions to the select menus
+		function custom_bulk_admin_footer() {
+			?>
+				<script type="text/javascript">
+					jQuery(document).ready(function() {
+						jQuery('<option>').val('subscribe').text('<?php echo __('Subscribe to WP JV CES notifications','wp-jv-custom-email-settings')?>').appendTo("select[name='action']");
+						jQuery('<option>').val('subscribe').text('<?php echo __('Subscribe to WP JV CES notifications','wp-jv-custom-email-settings')?>').appendTo("select[name='action2']");
+						jQuery('<option>').val('unsubscribe').text('<?php echo __('Unsubscribe from WP JV CES notifications','wp-jv-custom-email-settings')?>').appendTo("select[name='action']");
+						jQuery('<option>').val('unsubscribe').text('<?php echo __('Unsubscribe from WP JV CES notifications','wp-jv-custom-email-settings')?>').appendTo("select[name='action2']");
+					});
+				</script>
+			<?php
+		}
+		
+		// Step 2: handle the bulk actions, based on https://www.skyverge.com/blog/add-custom-bulk-action/
+		function custom_bulk_action() {
+			// get the actions
+			$wp_list_table = _get_list_table('WP_Users_List_Table'); 
+			$action = $wp_list_table->current_action();
+			
+			$allowed_actions = array('subscribe','unsubscribe');
+			if(!in_array($action, $allowed_actions)) return;
+			
+			// security check
+			check_admin_referer('bulk-users');
+			
+			//get the list of selected users
+			if(isset($_REQUEST['users'])) {$user_ids = array_map('intval', $_REQUEST['users']);}
+			if(empty($user_ids)) return;
+			
+			switch($action) {
+				case 'subscribe':
+					$subscribed = 0;
+					foreach( $user_ids as $user_id ) {						
+						if (!$this->perform_subscribe($user_id)) {wp_die( __('Error subscribing users.','wp-jv-custom-email-settings'));}		
+						$subscribed++;
+					}
+				break;
+				case 'unsubscribe':
+					$subscribed = 0;
+					foreach( $user_ids as $user_id ) {						
+						if (!$this->perform_unsubscribe($user_id)) {wp_die( __('Error unsubscribing users.','wp-jv-custom-email-settings'));}		
+						$subscribed++;
+					}
+				break;
+			}
+			//make sure we redirect user to the same page
+			$pagenum = $wp_list_table->get_pagenum();
+			wp_safe_redirect(add_query_arg( 'paged', $pagenum,admin_url('users.php')));
+			exit();
+		}
+		
+		function perform_subscribe($user_id) {
+			update_user_meta( $user_id, 'wp_jv_ces_user_notification', true);
+			if ( get_user_meta($user_id,  'wp_jv_ces_user_notification', true ) != true ) {	
+				return false;
+			}
+			else return true;
+		}
+
+		function perform_unsubscribe($user_id) {
+			update_user_meta( $user_id, 'wp_jv_ces_user_notification', false);
+			if ( get_user_meta($user_id,  'wp_jv_ces_user_notification', true ) != false ) {	
+				return false;
+			}
+			else return true;
+		}
+	}
+}
+
+new wp_jv_ces_all_users_bulk_action();
 
 /************************************************************************************************************/ 
 /* Adds a JV Custom Email Settings box to Edit Post screen */
@@ -503,6 +589,7 @@ class WP_JV_CES_List_Table extends WP_List_Table {
             'per_page'    => $per_page,                     //WE have to determine how many items to show on a page
             'total_pages' => ceil($total_items/$per_page)   //WE have to calculate the total number of pages
         ) );
+		
 	}
 
 	function no_items() {

@@ -1,0 +1,363 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP JV Custom Email Settings\n"
+"POT-Creation-Date: 2015-07-26 15:36-0000\n"
+"PO-Revision-Date: 2015-07-26 15:36-0000\n"
+"Last-Translator: \n"
+"Language-Team: Janos Ver\n"
+"Language: hu_HU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: d:\\webserver\\htdocs\\test\\wp-content\\plugins\\wp-"
+"jv-custom-email-settings\n"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:72
+msgid "Email From"
+msgstr "E-mail feladójának neve"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:73
+msgid "Email Address"
+msgstr "E-mail cím"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:77
+msgid "Notifications"
+msgstr "Értesítők"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:78
+msgid "Notification mode"
+msgstr "Értesítő küldése"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:79
+msgid "Notify users about"
+msgstr "Értesítő küldése"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:80
+msgid "Notification e-mail subject"
+msgstr "Értesítő e-mail tárgya"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:81
+msgid "Notification e-mail content"
+msgstr "Értesítő e-mail tartalma"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:103
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:418
+msgid "Sending email notifications..."
+msgstr "E-mail értesítés küldése..."
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:104
+msgid "Error sending emails."
+msgstr "Hiba az e-mail küldésekor."
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:105
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:399
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:409
+msgid "Re-send notification email(s)"
+msgstr "Értesítő e-mail(ek) újraküldése"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:106
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:976
+msgid "email(s) out of"
+msgstr "e-mail a"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:107
+msgid "notification(s) sent. Check"
+msgstr "értesítés elküldve. Ellenőrizd a"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:108
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:976
+msgid "sent with"
+msgstr "-ból/ből kiküldve"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:109
+msgid "log issues. Check"
+msgstr "naplózási hibával. Ellenőrizd"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:110
+msgid "log"
+msgstr "naplót"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:111
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:971
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:976
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:982
+msgid "for details."
+msgstr "a részletekért."
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:131
+msgid ""
+"By default all notification e-mails received from \"Wordpress\" < wordpress@"
+msgstr ""
+"Alapértelmezésként az értesítő e-maileket  a \"Wordpress\" < wordpress@"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:131
+msgid "You can change these below."
+msgstr "címről kapod. Itt ezt megváltoztathatod."
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:155
+msgid "Tags available to make e-mail subject and/or content dynamic:"
+msgstr ""
+"Az e-mail tárgyának és/vagy tartalmának dinamikussá tételéhez használható "
+"speciális tag-ek:"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:157
+msgid "means title of the post"
+msgstr "= a bejegyzés címe"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:158
+msgid "means URL of the post"
+msgstr "= a bejegyzés URL-je"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:159
+msgid "means URL with title of the post"
+msgstr "= a bejegyzés URL-je a bejegyzés címével"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:160
+msgid "means the name of the post author"
+msgstr "= a bejegyzés szerzőjének neve"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:161
+msgid "means excerpt of the post"
+msgstr "= a bejegyzés kivonata"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:162
+msgid ""
+"means the first n (must be an integer number) number of word(s) extracted "
+"from the post"
+msgstr "= a bejegyzés első \"x\" darab szava (egész számnak kell lennie)"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:163
+msgid "means display name of the user who receives the e-mail"
+msgstr "= az e-mail címzettjének megjelenítési neve"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:169
+msgid "Auto"
+msgstr "Automatikus"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:169
+msgid "(send e-mails automatically when you publish a post)"
+msgstr "(a bejegyzés publikálásakor automatikusan kiküldi az e-maileket)"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:170
+msgid "Manual"
+msgstr "Kézi"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:170
+msgid "(you need to press a button to send notification)"
+msgstr "(meg kell nyomnod egy gombot, hogy kiküldje az értesítőket)"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:185
+msgid "Public posts"
+msgstr "Nyilvános bejegyzések"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:187
+msgid "Password"
+msgstr "Jelszó"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:187
+msgid "protected posts (password will"
+msgstr "védett bejegyzések (a jelszó"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:187
+msgid "NOT"
+msgstr "NEM"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:187
+msgid "be included in notification e-mail)"
+msgstr "kerül kiküldésre az e-mailben)"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:194
+msgid "This feature requires"
+msgstr "Ehhez a funkcióhoz a"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:194
+msgid "to be installed and activated."
+msgstr "telepítése és aktiválása szükséges."
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:197
+msgid "Private posts"
+msgstr "Magánjellegű bejegyzések"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:197
+msgid "Notifications are based on"
+msgstr "Az értesítők a"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:197
+msgid "settings."
+msgstr "beállításain múlnak"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:203
+msgid ""
+"Hint: HTML tags are not allowed here, e.g.: %title_with_permalink% will "
+"revert to %title%."
+msgstr ""
+"Tipp: HTML tagek itt nem megengedettek, például a %title_with_permalink% "
+"helyett a %title% lesz használva."
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:210
+msgid ""
+"Hint: HTML tags are welcome here to make your notification e-mails more "
+"personalized."
+msgstr ""
+"Tipp: itt a HTML tag-eket is használhatod, hogy az értesítőid még jobban "
+"testre szabd."
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:242
+msgid "Notify me by e-mail when a new post is published"
+msgstr "E-mail értesítést kérek, amikor egy új bejegyzés publikálásra kerül"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:314
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:315
+msgid "Subscribe to WP JV CES notifications"
+msgstr "Feliratkozás a WP JV CES e-mail értesítésekre"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:316
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:317
+msgid "Unsubscribe from WP JV CES notifications"
+msgstr "Leliratkozás a WP JV CES e-mail értesítésekről"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:343
+msgid "Error subscribing users."
+msgstr "Hiba a felhasználók feliratkoztatásakor"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:350
+msgid "Error unsubscribing users."
+msgstr "Hiba a felhasználók leliratkoztatásakor"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:403
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:406
+msgid "Send notification email(s)"
+msgstr "Értesítő e-mail(ek) küldése"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:437
+msgid "Log"
+msgstr "Napló"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:453
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Nem rendelkezel megfelelő jogosultsággal az oldal eléréséhez."
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:473
+msgid "Notification email sent"
+msgstr "Értesítő e-mail elküldve"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:474
+msgid "Notification emails sent"
+msgstr "Értesítő e-mailek elküldve"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:482
+msgid "Post Title"
+msgstr "Bejegyzés címe"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:483
+msgid "E-mail sent"
+msgstr "Email küldve"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:484
+msgid "User Name"
+msgstr "Felhasználó név"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:485
+msgid "User E-mail"
+msgstr "Felhasználó e-mail címe"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:486
+msgid "Status"
+msgstr "Állapot"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:596
+msgid "No e-mails sent out, yet."
+msgstr "Egyetlen e-mailt sem küldtél még."
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:971
+msgid "Error sending notifications."
+msgstr "Hiba történt az értesítések küldése közben"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:971
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:976
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:982
+msgid "Check log"
+msgstr "Ellenőrizd a naplót"
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:976
+msgid "log issues."
+msgstr "naplózási hibával."
+
+#: d:\webserver\htdocs\test\wp-content\plugins\wp-jv-custom-email-settings/wp-jv-custom-email-settings.php:982
+msgid "notification(s) sent."
+msgstr "értesítő elküldve."
+
+#~ msgid "Subscribe to WP JV CES nofications"
+#~ msgstr "Feliratkozás a WP JV CES e-mail értesítésekre"
+
+#~ msgid "Unsubscribe from WP JV CES nofications"
+#~ msgstr "Leliratkozás a WP JV CES e-mail értesítésekről"
+
+#~ msgid " notification(s) sent. "
+#~ msgstr " értesítő elküldve. "
+
+#~ msgid " for details."
+#~ msgstr " a részletekért."
+
+#~ msgid " log issues."
+#~ msgstr " napló hiba."
+
+#~ msgid " sent with "
+#~ msgstr " -ból/ből kiküldve"
+
+#~ msgid " email(s) out of "
+#~ msgstr " e-mail a "
+
+#~ msgid "Notifications are based on "
+#~ msgstr "Az értesítők a "
+
+#~ msgid "to be installed and activated. "
+#~ msgstr " "
+
+#~ msgid " be included in notification e-mail)"
+#~ msgstr " "
+
+#~ msgid " protected posts (password will "
+#~ msgstr "  "
+
+#~ msgid " (you need to press a button to send notification)"
+#~ msgstr " "
+
+#~ msgid " (send e-mails automatically when you publish a post)"
+#~ msgstr " "
+
+#~ msgid " means title of the post"
+#~ msgstr " = a bejegyzés címe"
+
+#~ msgid " means URL of the post"
+#~ msgstr " = a bejegyzés URL-je"
+
+#~ msgid " means URL with title of the post"
+#~ msgstr " =a bejegyzés URL-je a bejegyzés címével"
+
+#~ msgid " means the name of the post author"
+#~ msgstr " = a bejegyzés szerzőkének neve"
+
+#~ msgid " means excerpt of the post"
+#~ msgstr " = a bejegyzés kivonata"
+
+#~ msgid ""
+#~ " means the first n (must be an integer number) number of word(s) "
+#~ "extracted from the post"
+#~ msgstr " = a bejegyzés első \"x\" darab szava (egész számnak kell lennie)"
+
+#~ msgid " means display name of the user who receives the e-mail"
+#~ msgstr " = az e-mail címzettjének megjelenítési neve "
+
+#~ msgid " >. You can change these below."
+#~ msgstr " > címről kapod. Itt ezt megváltoztathatod."
+
+#~ msgid " - Notifications"
+#~ msgstr " - Értesítők"
+
+#~ msgid " log issues. Check"
+#~ msgstr " naplózási hiba. Ellenőrizd"
